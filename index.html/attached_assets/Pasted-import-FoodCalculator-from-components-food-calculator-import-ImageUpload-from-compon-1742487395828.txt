@@ -1,0 +1,71 @@
+import { FoodCalculator } from "@/components/food-calculator";
+import { ImageUpload } from "@/components/image-upload";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+      {/* Modern, Apple-style Navigation */}
+      <nav className="fixed w-full top-0 left-0 z-50 bg-black/30 backdrop-blur-xl border-b border-white/10">
+        <div className="max-w-[980px] mx-auto px-6 py-4">
+          <div className="text-2xl font-medium">CrispiClean</div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-[980px] mx-auto text-center space-y-6">
+          <h1 className="text-6xl font-semibold tracking-tight bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+            The Future of
+            <br />
+            Your Favorite Foods
+          </h1>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Revolutionary oil reduction technology that preserves taste while reducing calories. Experience the future of healthier cooking.
+          </p>
+        </div>
+      </section>
+
+      {/* Prototype Features */}
+      <section className="py-20 bg-gradient-to-b from-blue-900/20 to-transparent overflow-hidden">
+        <div className="max-w-[980px] mx-auto px-6">
+          <div className="text-center">
+            <h2 className="text-4xl font-semibold mb-16">First Prototype Features</h2>
+            <div className="grid md:grid-cols-3 gap-12">
+              <div className="space-y-4">
+                <div className="text-3xl mb-4">⚙️</div>
+                <h3 className="text-xl font-medium">Oil Spinner Mechanism</h3>
+                <p className="text-gray-400">Advanced spinning system that efficiently extracts excess oil from deep-fried foods</p>
+              </div>
+              <div className="space-y-4">
+                <div className="text-3xl mb-4">🔋</div>
+                <h3 className="text-xl font-medium">Metal Bowl Design</h3>
+                <p className="text-gray-400">Specialized collection system with oil filter for easy disposal or reuse</p>
+              </div>
+              <div className="space-y-4">
+                <div className="text-3xl mb-4">📊</div>
+                <h3 className="text-xl font-medium">AI-Powered Analysis</h3>
+                <p className="text-gray-400">Precise calorie calculations for Malaysian deep-fried foods</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Analysis Tools */}
+      <main className="max-w-[980px] mx-auto px-6 pb-20">
+        <h2 className="text-4xl font-semibold text-center mb-12">AI-Powered Calorie Analysis</h2>
+        <div className="grid gap-8 md:grid-cols-2">
+          <ImageUpload />
+          <FoodCalculator />
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-white/10">
+        <div className="max-w-[980px] mx-auto px-6 py-8 text-center text-sm text-gray-400">
+          © 2025 CodNova. Innovating for a healthier future.
+        </div>
+      </footer>
+    </div>
+  );
+}

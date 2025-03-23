@@ -1,0 +1,255 @@
+ <!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknologi CrispiClean | Kalori Makanan</title>
+    <style>
+        /* GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background:#0F172A;
+            color: #f5f7f7;
+            text-align: center;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            padding: 15px 20px;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.4);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 150px 20px;
+            background: linear-gradient(135deg, #2e5ce6, #0F172A);
+            color: white;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .hero img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+input {
+    border: 2px solid #38BDF8; /* Warna biru muda */
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+        }
+        }
+        .hero h1 {
+            font-size: 50px;
+            font-weight: bold;        }
+        .hero p {
+            font-size: 22px;
+            opacity: 0.8;
+        }
+
+        /* SEARCH BOX */
+        .search-box {
+            margin: 40px 0;
+        }
+        input {
+            padding: 12px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 25px;
+            border: 2px solid #ff007f;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+        }
+        input {
+    border: 2px solid #38BDF8; /* Warna biru muda */
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+        }
+
+        /* TABLE DESIGN */
+input {
+    border: 2px solid #38BDF8; /* Warna biru muda */
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+        }
+        .table-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        th {
+            background: rgba(0, 255, 255, 0.2);
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
+        }
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+        }
+
+        /* CALCULATOR */
+        .calculator {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+            text-align: center;
+        }
+        .calculator select, .calculator input {
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: 1px solid #ff007f;
+            background: rgba(255, 255, 255, 0.1);
+color: white;
+            outline: none;
+            text-align: center;
+            margin: 5px;
+            width: 80%;
+            max-width: 250px;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+            font-size: 14px;
+        }
+
+        /* ANIMATIONS */
+@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <script>
+        function searchTable() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let rows = document.querySelectorAll("table tr");
+            rows.forEach((row, index) => {
+                if (index === 0) return;
+                let foodName = row.cells[2].textContent.toLowerCase();
+                row.style.display = foodName.includes(input) ? "" : "none";
+            });
+        }
+
+        function calculateCalories() {
+            let grams = document.getElementById("grams").value;
+            let kcalBefore = document.getElementById("foodSelect").value;
+            let kcalAfter = kcalBefore * 0.8;
+            if (grams) {
+                document.getElementById("calculatedCaloriesBefore").textContent = ((grams / 100) * kcalBefore).toFixed(2) + " kcal";
+                document.getElementById("calculatedCaloriesAfter").textContent = ((grams / 100) * kcalAfter).toFixed(2) + " kcal";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">🔷 CrispiClean</div>
+    <div class="hero">
+        <img src="logo_team.png" alt="Logo Team">
+        <h1>Revolusi Makanan Sihat</h1>
+        <p>Bandingkan kalori sebelum dan selepas menggunakan CrispiClean</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Cari makanan..." onkeyup="searchTable()">
+    </div>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>Gambar</th>
+    				  <th>Nama Makanan</th>
+                <th>Kalori Sebelum (100g)</th>
+                <th>Kalori Selepas (100g)</th>
+            </tr>
+<tr><td>1</td><td><img src="ayam_goreng.jpg" alt="Pisang Goreng"></td><td>Ayam Goreng</td><td>267.00 kcal</td><td>213.60 kcal</td></tr>
+<tr><td>2</td><td><img src="pisang_goreng.jpg" alt="Pisang Goreng"></td><td>Pisang Goreng</td><td>267.00 kcal</td><td>213.60 kcal</td></tr>
+            <tr><td>3</td><td><img src="cempedak_goreng.jpg" alt="Cempedak Goreng"></td><td>Cempedak Goreng</td><td>280.00 kcal</td><td>224.00 kcal</td></tr>
+ <tr><td>4</td><td><img src="nugget.jpg" alt="Nugget"></td><td>Nugget</td><td>290.00 kcal</td><td>232.00 kcal</td></tr>
+            <tr><td>5</td><td><img src="cekodok.jpg" alt="Cekodok"></td><td>Cekodok</td><td>350.00 kcal</td><td>280.00 kcal</td></tr>
+            <tr><td>6</td><td><img src="kerepek_pisang.jpg" alt="Kerepek Pisang"></td><td>Kerepek Pisang</td><td>450.00 kcal</td><td>360.00 kcal</td></tr>
+            <tr><td>7</td><td><img src="kuih_keria.jpg" alt="Kuih Keria"></td><td>Kuih Keria</td><td>380.00 kcal</td><td>304.00 kcal</td></tr>
+            <tr><td>8</td><td><img src="donut_gula.jpg" alt="Donut Gula"></td><td>Donut Gula</td><td>420.00 kcal</td><td>336.00 kcal</td></tr>
+            <tr><td>9</td><td><img src="kuih_bom.jpg" alt="Kuih Bom"></td><td>Kuih Bom</td><td>410.00 kcal</td><td>328.00 kcal</td></tr>
+            <tr><td>10</td><td><img src="pau_goreng.jpg" alt="Pau Goreng"></td><td>Pau Goreng</td><td>390.00 kcal</td><td>312.00 kcal</td></tr>
+            <tr><td>11</td><td><img src="cucur_badak.jpg" alt="Cucur Badak"></td><td>Cucur Badak</td><td>370.00 kcal</td><td>296.00 kcal</td></tr>
+            <tr><td>12</td><td><img src="vadai.jpg" alt="Vadai"></td><td>Vadai</td><td>360.00 kcal</td><td>288.00 kcal</td></tr>
+            <tr><td>13</td><td><img src="karipap.jpg" alt="Karipap"></td><td>Karipap</td><td>400.00 kcal</td><td>320.00 kcal</td></tr>
+            <tr><td>14</td><td><img src="samosa.jpg" alt="Samosa"></td><td>Samosa</td><td>410.00 kcal</td><td>328.00 kcal</td></tr>
+        </table>
+    </div>
+        </table>
+    </div>
+
+    <div class="calculator">
+        <h2>Kira Kalori</h2>
+        <select id="foodSelect">
+            <option value="267">Ayam Goreng</option>
+            <option value="267">Pisang Goreng</option>
+<option value="280">Cempedak Goreng</option>
+            <option value="400">Karipap</option>
+<option value="290">Nugget</option>
+            <option value="350">Cekodok</option>
+            <option value="450">Kerepek Pisang</option>
+<option value="380">Kuih Keria</option>
+            <option value="420">Donut Gula</option>
+            <option value="410">Kuih Bom</option>
+            <option value="390">Pau Goreng</option>
+            <option value="370">Cucur Badak</option>
+            <option value="360">Vadai</option>
+            <option value="410">Samosa</option>
+        </select>
+        <input type="number" id="grams" placeholder="Masukkan Gram" oninput="calculateCalories()">
+        <p>Kalori Sebelum: <span id="calculatedCaloriesBefore">0 kcal</span></p>
+        <p>Kalori Selepas: <span id="calculatedCaloriesAfter">0 kcal</span></p>
+    </div>
+
+    <div class="footer">© 2025 CodNova. Semua Hak Cipta Terpelihara.</div>
+</body>
+</html>
